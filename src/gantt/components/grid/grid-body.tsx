@@ -1,5 +1,5 @@
 import { addToDate } from "../../helpers/date-helper";
-import { Task } from "../../types/public-types";
+import type { Task } from "../../types/public-types";
 import styles from "./grid.module.css";
 
 export type GridBodyProps = {

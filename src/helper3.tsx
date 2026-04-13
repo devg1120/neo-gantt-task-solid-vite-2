@@ -1,4 +1,4 @@
-import { Task } from "./neo-gantt-task-react/dist/types/public-types";
+import type { Task } from "./neo-gantt-task-react/dist/types/public-types";
 
 export function initTasks() {
     console.trace();

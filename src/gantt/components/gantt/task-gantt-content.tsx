@@ -1,10 +1,10 @@
 import { handleTaskBySVGMouseEvent } from "../../helpers/bar-helper";
 import { isKeyboardEvent } from "../../helpers/other-helper";
-import { BarTask } from "../../types/bar-task";
-import { BarMoveAction, GanttContentMoveAction, GanttEvent } from "../../types/gantt-task-actions";
-import { EventOption } from "../../types/public-types";
-import { Arrow } from "../other/arrow";
-import { TaskItem } from "../task-item/task-item";
+import type { BarTask } from "../../types/bar-task";
+import type { BarMoveAction, GanttContentMoveAction, GanttEvent } from "../../types/gantt-task-actions";
+import type { EventOption } from "../../types/public-types";
+import type { Arrow } from "../other/arrow";
+import type { TaskItem } from "../task-item/task-item";
 import { createEffect, on, createSignal } from "solid-js";
 
 export type TaskGanttContentProps = {

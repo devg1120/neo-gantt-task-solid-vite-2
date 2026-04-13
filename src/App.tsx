@@ -1,5 +1,5 @@
 import { Gantt, type Task, ViewMode } from "./gantt/index.js";
-import { ScrollSyncSig } from "./gantt/types/public-types";
+import type { ScrollSyncSig } from "./gantt/types/public-types";
 import { ViewSwitcher } from "./components/view-switcher";
 import { getStartEndDateForProject, initTasks } from "./helper2";
 import "./index.css";

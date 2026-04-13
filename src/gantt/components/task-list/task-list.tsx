@@ -1,7 +1,7 @@
-import { BarTask } from "../../types/bar-task";
-import { Task } from "../../types/public-types";
-import { TaskListTableProps } from "./task-list-table";
-import { TaskListHeaderProps } from "./task-list-header";
+import type { BarTask } from "../../types/bar-task";
+import type { Task } from "../../types/public-types";
+import type { TaskListTableProps } from "./task-list-table";
+import type { TaskListHeaderProps } from "./task-list-header";
 import { createEffect, on } from "solid-js";
 
 export type TaskListProps = {

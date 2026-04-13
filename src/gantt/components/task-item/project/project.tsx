@@ -1,4 +1,4 @@
-import { TaskItemProps } from "../task-item";
+import type { TaskItemProps } from "../task-item";
 import styles from "./project.module.css";
 
 export const Project: Component<TaskItemProps> = ({ task, isSelected }) => {

@@ -1,9 +1,9 @@
 import { getCachedDateTimeFormat, getDaysInMonth, getLocalDayOfWeek, getLocaleMonth } from "../../helpers/date-helper";
-import { DateSetup } from "../../types/date-setup";
-import { ViewModeEnum } from "../../types/public-types";
+import type { DateSetup } from "../../types/date-setup";
+import type { ViewModeEnum } from "../../types/public-types";
 import styles from "./calendar.module.css";
-import { TopPartOfCalendar } from "./top-part-of-calendar";
-import { JSXElement } from "solid-js";
+import type { TopPartOfCalendar } from "./top-part-of-calendar";
+import type { JSXElement } from "solid-js";
 
 export type CalendarProps = {
     dateSetup: DateSetup;

@@ -1,5 +1,5 @@
 //import { Task } from "./neo-gantt-task-react/dist/types/public-types";
-import { Task } from "./gantt/types/public-types";
+import type { Task } from "./gantt/types/public-types";
 
 export function initTasks() {
     const currentDate = new Date();

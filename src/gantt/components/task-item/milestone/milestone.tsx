@@ -1,4 +1,4 @@
-import { TaskItemProps } from "../task-item";
+import type { TaskItemProps } from "../task-item";
 import styles from "./milestone.module.css";
 
 export const Milestone: Component<TaskItemProps> = ({

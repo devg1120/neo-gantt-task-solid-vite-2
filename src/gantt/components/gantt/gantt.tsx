@@ -1,13 +1,13 @@
 import { convertToBarTasks } from "../../helpers/bar-helper";
 import { ganttDateRange, seedDates } from "../../helpers/date-helper";
 import { removeHiddenTasks, sortTasks } from "../../helpers/other-helper";
-import { BarTask } from "../../types/bar-task";
-import { DateSetup } from "../../types/date-setup";
-import { GanttEvent } from "../../types/gantt-task-actions";
+import type { BarTask } from "../../types/bar-task";
+import type { DateSetup } from "../../types/date-setup";
+import type { GanttEvent } from "../../types/gantt-task-actions";
 import { type GanttProps, type Task, ViewModeEnum } from "../../types/public-types";
-import { CalendarProps } from "../calendar/calendar";
-import { GridProps } from "../grid/grid";
-import { HorizontalScroll } from "../other/horizontal-scroll";
+import type { CalendarProps } from "../calendar/calendar";
+import type { GridProps } from "../grid/grid";
+import type { HorizontalScroll } from "../other/horizontal-scroll";
 import { StandardTooltipContent, Tooltip } from "../other/tooltip";
 import { VerticalScroll } from "../other/vertical-scroll";
 import { TaskList, type TaskListProps } from "../task-list/task-list";
@@ -15,7 +15,7 @@ import { TaskListHeaderDefault } from "../task-list/task-list-header";
 import { TaskListTableDefault } from "../task-list/task-list-table";
 import styles from "./gantt.module.css";
 import { TaskGantt } from "./task-gantt";
-import { TaskGanttContentProps } from "./task-gantt-content";
+import type { TaskGanttContentProps } from "./task-gantt-content";
 
 export const Gantt: React.FunctionComponent<GanttProps> = ({
     id = 0,
