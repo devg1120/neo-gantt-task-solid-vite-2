@@ -72,6 +72,8 @@ export const Gantt: Component<GanttProps> = ({
     syncScrollY,
 }) => {
 
+    console.log(tasks);
+    console.log(viewMode);
     const createDefaultDates = () => {
         const today = new Date();
         const daysBefore = 7;

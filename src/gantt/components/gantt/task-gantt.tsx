@@ -21,6 +21,8 @@ export const TaskGantt: Component<TaskGanttProps> = ({
     scrollY,
     scrollX,
 }) => {
+console.log(calendarProps.viewMode);
+
     //const ganttSVGRef = useRef<SVGSVGElement>(null);
     //const horizontalContainerRef = useRef<HTMLDivElement>(null);
     //const verticalGanttContainerRef = useRef<HTMLDivElement>(null);

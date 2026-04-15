@@ -1,8 +1,8 @@
 import { getCachedDateTimeFormat, getDaysInMonth, getLocalDayOfWeek, getLocaleMonth } from "../../helpers/date-helper";
 import type { DateSetup } from "../../types/date-setup";
-import type { ViewModeEnum } from "../../types/public-types";
+import { ViewModeEnum } from "../../types/public-types";
 import styles from "./calendar.module.css";
-import type { TopPartOfCalendar } from "./top-part-of-calendar";
+import { TopPartOfCalendar } from "./top-part-of-calendar";
 import type { JSXElement } from "solid-js";
 
 export type CalendarProps = {
@@ -28,6 +28,7 @@ export const Calendar: Component<CalendarProps> = ({
     fontSize,
     showDayOfWeek,
 }) => {
+  console.log(viewMode)
     const calculateXText = (
         rtl: boolean,
         i: number,
@@ -43,8 +44,8 @@ export const Calendar: Component<CalendarProps> = ({
         const topValues: JSXElement[] = [];
         const bottomValues: JSXElement[] = [];
         const topDefaultHeight = headerHeight * 0.5;
-        for (let i = 0; i < dateSetup.dates.length; i++) {
-            const date = dateSetup.dates[i];
+        for (let i = 0; i < dateSetup().dates.length; i++) {
+            const date = dateSetup().dates[i];
             const bottomValue = date.getFullYear();
             bottomValues.push(
                 <text
@@ -57,7 +58,7 @@ export const Calendar: Component<CalendarProps> = ({
             );
             if (
                 i === 0 ||
-                date.getFullYear() !== dateSetup.dates[i - 1].getFullYear()
+                date.getFullYear() !== dateSetup().dates[i - 1].getFullYear()
             ) {
                 const topValue = date.getFullYear().toString();
                 const xText = calculateXText(rtl, i, date.getFullYear(), columnWidth);
@@ -80,8 +81,8 @@ export const Calendar: Component<CalendarProps> = ({
         const topValues: JSXElement[] = [];
         const bottomValues: JSXElement[] = [];
         const topDefaultHeight = headerHeight * 0.5;
-        for (let i = 0; i < dateSetup.dates.length; i++) {
-            const date = dateSetup.dates[i];
+        for (let i = 0; i < dateSetup().dates.length; i++) {
+            const date = dateSetup().dates[i];
             // const bottomValue = getLocaleMonth(date, locale);
             const quarter = `Q${Math.floor((date.getMonth() + 3) / 3)}`;
             bottomValues.push(
@@ -95,7 +96,7 @@ export const Calendar: Component<CalendarProps> = ({
             );
             if (
                 i === 0 ||
-                date.getFullYear() !== dateSetup.dates[i - 1].getFullYear()
+                date.getFullYear() !== dateSetup().dates[i - 1].getFullYear()
             ) {
                 const topValue = date.getFullYear().toString();
                 const xText = calculateXText(rtl, i, date.getMonth(), columnWidth);
@@ -118,8 +119,8 @@ export const Calendar: Component<CalendarProps> = ({
         const topValues: JSXElement[] = [];
         const bottomValues: JSXElement[] = [];
         const topDefaultHeight = headerHeight * 0.5;
-        for (let i = 0; i < dateSetup.dates.length; i++) {
-            const date = dateSetup.dates[i];
+        for (let i = 0; i < dateSetup().dates.length; i++) {
+            const date = dateSetup().dates[i];
             const bottomValue = getLocaleMonth(date, locale);
             bottomValues.push(
                 <text
@@ -132,7 +133,7 @@ export const Calendar: Component<CalendarProps> = ({
             );
             if (
                 i === 0 ||
-                date.getFullYear() !== dateSetup.dates[i - 1].getFullYear()
+                date.getFullYear() !== dateSetup().dates[i - 1].getFullYear()
             ) {
                 const topValue = date.getFullYear().toString();
                 const xText = calculateXText(rtl, i, date.getMonth(), columnWidth);
@@ -156,7 +157,7 @@ export const Calendar: Component<CalendarProps> = ({
         const bottomValues: JSXElement[] = [];
         let weeksCount = 1;
         const topDefaultHeight = headerHeight * 0.5;
-        const dates = dateSetup.dates;
+        const dates = dateSetup().dates;
         for (let i = dates.length - 1; i >= 0; i--) {
             const date = dates[i];
             let topValue = "";
@@ -221,7 +222,8 @@ export const Calendar: Component<CalendarProps> = ({
         const bottomValues: JSXElement[] = [];
         //const topDefaultHeight = headerHeight * 0.5;
         const topDefaultHeight = headerHeight * 0.35; //GUSA
-        const dates = dateSetup.dates;
+        //const dates = dateSetup.dates;
+        const dates = dateSetup()()['dates']; //GUSA
         for (let i = 0; i < dates.length; i++) {
             const date = dates[i];
             const week = date.getDay();
@@ -312,7 +314,7 @@ export const Calendar: Component<CalendarProps> = ({
         const bottomValues: JSXElement[] = [];
         const ticks = viewMode === ViewModeEnum.HalfDay ? 2 : 4;
         const topDefaultHeight = headerHeight * 0.5;
-        const dates = dateSetup.dates;
+        const dates = dateSetup().dates;
         for (let i = 0; i < dates.length; i++) {
             const date = dates[i];
             const bottomValue = getCachedDateTimeFormat(locale, {
@@ -369,7 +371,7 @@ export const Calendar: Component<CalendarProps> = ({
         const topValues: JSXElement[] = [];
         const bottomValues: JSXElement[] = [];
         const topDefaultHeight = headerHeight * 0.5;
-        const dates = dateSetup.dates;
+        const dates = dateSetup().dates;
         for (let i = 0; i < dates.length; i++) {
             const date = dates[i];
             const bottomValue = getCachedDateTimeFormat(locale, {
@@ -427,7 +429,10 @@ export const Calendar: Component<CalendarProps> = ({
     let topValues: JSXElement[] = [];
     let midValues: JSXElement[] = [];
     let bottomValues: JSXElement[] = [];
-    switch (dateSetup.viewMode) {
+    console.log(">>",dateSetup()()['viewMode']);
+
+    //switch (dateSetup.viewMode) {
+    switch (dateSetup()()['viewMode']) {   //GUSA
         case ViewModeEnum.Year:
             [topValues, bottomValues] = getCalendarValuesForYear();
             break;
@@ -455,7 +460,7 @@ export const Calendar: Component<CalendarProps> = ({
             <rect
                 x={0}
                 y={0}
-                width={columnWidth * dateSetup.dates.length}
+                width={columnWidth * dateSetup()().dates.length}   /*GUSA*/
                 height={headerHeight}
                 class={styles.calendarHeader}
             />
