@@ -47,6 +47,9 @@ export const TaskListTableDefault: Component<TaskListTableProps> = ({
     onExpanderClick,
     showFromTo,
 }) => {
+
+  console.log("tasks", tasks());
+
     const toLocaleDateString = createMemo(
         () => toLocaleDateStringFactory(locale)
     );
@@ -59,7 +62,7 @@ export const TaskListTableDefault: Component<TaskListTableProps> = ({
                 fontSize: fontSize
             }}
         >
-            {tasks.map((task) => {
+            {tasks().map((task) => {
                 let expanderSymbol = "";
                 if (task.hideChildren === false) {
                     expanderSymbol = "▼";

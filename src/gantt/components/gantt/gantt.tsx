@@ -19,7 +19,8 @@ import styles from "./gantt.module.css";
 import { TaskGantt } from "./task-gantt";
 import type { TaskGanttContentProps } from "./task-gantt-content";
 
-export const Gantt: React.FunctionComponent<GanttProps> = ({
+//export const Gantt: React.FunctionComponent<GanttProps> = ({
+export const Gantt: Component<GanttProps> = ({
     id = 0,
     tasks = [],
     //headerHeight = 50,
