@@ -20,6 +20,7 @@ export const GridBody: Component<GridBodyProps> = ({
     todayColor,
     rtl,
 }) => {
+    //console.log(dates);
     let y = 0;
     const gridRows = [];
     const rowLines = [

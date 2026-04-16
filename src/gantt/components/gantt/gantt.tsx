@@ -568,7 +568,8 @@ export const Gantt: Component<GanttProps> = ({
         svgWidth,
         tasks: tasks,
         rowHeight,
-        dates: dateSetup.dates,
+        //dates: dateSetup.dates,
+        dates: dateSetup()().dates,  //GUSA
         todayColor,
         rtl,
     };
@@ -585,7 +586,8 @@ export const Gantt: Component<GanttProps> = ({
     };
     const barProps: TaskGanttContentProps = {
         tasks: barTasks,
-        dates: dateSetup.dates,
+        //dates: dateSetup.dates,
+        dates: dateSetup()().dates,
         ganttEvent,
         selectedTask,
         rowHeight,
