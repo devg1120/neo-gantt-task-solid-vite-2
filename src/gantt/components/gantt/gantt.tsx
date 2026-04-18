@@ -9,7 +9,7 @@ import type { GanttEvent } from "../../types/gantt-task-actions";
 import { type GanttProps, type Task, ViewModeEnum } from "../../types/public-types";
 import type { CalendarProps } from "../calendar/calendar";
 import type { GridProps } from "../grid/grid";
-import type { HorizontalScroll } from "../other/horizontal-scroll";
+import { HorizontalScroll } from "../other/horizontal-scroll";
 import { StandardTooltipContent, Tooltip } from "../other/tooltip";
 import { VerticalScroll } from "../other/vertical-scroll";
 import { TaskList, type TaskListProps } from "../task-list/task-list";
@@ -72,8 +72,8 @@ export const Gantt: Component<GanttProps> = ({
     syncScrollY,
 }) => {
 
-    console.log(tasks);
-    console.log(viewMode);
+    //console.log(tasks);
+    //console.log(viewMode);
     const createDefaultDates = () => {
         const today = new Date();
         const daysBefore = 7;
@@ -377,7 +377,7 @@ export const Gantt: Component<GanttProps> = ({
     }, [scrollX]);
 
     createEffect(() => {
-        console.log("syncScrollX", syncScrollX)
+        //console.log("syncScrollX", syncScrollX)
         if (!syncScrollX) { return; }
         if (syncScrollX.sid == id) { return; }
 
@@ -499,7 +499,7 @@ export const Gantt: Component<GanttProps> = ({
         let newScrollY = scrollY;
         let newScrollX = scrollX;
         let isX = true;
-        console.log("keydown")
+        //console.log("keydown")
         switch (event.key) {
             case "Down": // IE/Edge specific value
             case "ArrowDown":

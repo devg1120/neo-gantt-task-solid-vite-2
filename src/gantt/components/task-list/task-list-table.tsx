@@ -48,7 +48,7 @@ export const TaskListTableDefault: Component<TaskListTableProps> = ({
     showFromTo,
 }) => {
 
-  console.log("tasks", tasks());
+  //console.log("tasks", tasks());
 
     const toLocaleDateString = createMemo(
         () => toLocaleDateStringFactory(locale)

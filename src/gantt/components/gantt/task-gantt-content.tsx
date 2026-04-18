@@ -52,6 +52,8 @@ export const TaskGanttContent: Component<TaskGanttContentProps> = ({
     onClick,
     onDelete,
 }) => {
+
+   //console.log("tasks", tasks);
     const point = svg?.current?.createSVGPoint();
     const [xStep, setXStep] = createSignal(0);
     const [initEventX1Delta, setInitEventX1Delta] = createSignal(0);
@@ -266,7 +268,7 @@ export const TaskGanttContent: Component<TaskGanttContentProps> = ({
     return (
         <g class="content">
             <g class="arrows" fill={arrowColor} stroke={arrowColor}>
-                {tasks.map((task) => {
+                {tasks().map((task) => {
                     return task.barChildren.map((child) => {
                         return (
                             <Arrow
@@ -282,7 +284,7 @@ export const TaskGanttContent: Component<TaskGanttContentProps> = ({
                 })}
             </g>
             <g class="bar" fontFamily={fontFamily} fontSize={fontSize}>
-                {tasks.map((task) => {
+                {tasks().map((task) => {
                     return (
                         <TaskItem
                             task={task}

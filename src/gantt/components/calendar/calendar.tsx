@@ -28,7 +28,7 @@ export const Calendar: Component<CalendarProps> = ({
     fontSize,
     showDayOfWeek,
 }) => {
-  console.log(viewMode)
+  //console.log(viewMode)
     const calculateXText = (
         rtl: boolean,
         i: number,
@@ -429,7 +429,7 @@ export const Calendar: Component<CalendarProps> = ({
     let topValues: JSXElement[] = [];
     let midValues: JSXElement[] = [];
     let bottomValues: JSXElement[] = [];
-    console.log(">>",dateSetup()()['viewMode']);
+    //console.log(">>",dateSetup()()['viewMode']);
 
     //switch (dateSetup.viewMode) {
     switch (dateSetup()()['viewMode']) {   //GUSA
