@@ -217,7 +217,9 @@ return (
                 x={getX()}
                 y={task.y + taskHeight * 0.5}
                 class={
-                         style.barLabel && style.barLabelOutside
+                    isTextInside()
+                        ? style.barLabel
+                        : style.barLabel && style.barLabelOutside
                 }
                 ref={textRef}
             >
