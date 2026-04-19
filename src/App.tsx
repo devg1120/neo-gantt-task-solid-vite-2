@@ -128,6 +128,7 @@ const App = () => {
                 rowHeight={rowHeight}
                 showFromTo={showFromTo()}
             />
+{/*
             <h3>Gantt With Limited Height1</h3>
             <Gantt
                 id={2}
@@ -178,6 +179,7 @@ const App = () => {
             />
             <h3>No Tasks</h3>
             <Gantt tasks={[]} />
+*/}
         </div>
     );
 };
