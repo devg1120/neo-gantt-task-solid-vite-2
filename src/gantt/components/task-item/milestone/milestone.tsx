@@ -7,8 +7,8 @@ export const Milestone: Component<TaskItemProps> = ({
     onEventStart,
     isSelected,
 }) => {
-    const transform = `rotate(45 ${task.x1 + task.height * 0.356} 
-    ${task.y + task.height * 0.85})`;
+    const transform = `rotate(45 ${task.x1 + task.height() * 0.356} 
+    ${task.y + task.height() * 0.85})`;
     const getBarColor = () => {
         return isSelected
             ? task.styles.backgroundSelectedColor
@@ -20,9 +20,9 @@ export const Milestone: Component<TaskItemProps> = ({
             <rect
                 fill={getBarColor()}
                 x={task.x1}
-                width={task.height}
+                width={task.height()}
                 y={task.y}
-                height={task.height}
+                height={task.height()}
                 rx={task.barCornerRadius}
                 ry={task.barCornerRadius}
                 transform={transform}

@@ -50,7 +50,7 @@ export const TaskItem: Component<TaskItemProps> = (props) => {
     //const textRef = useRef<SVGTextElement>(null);
     let textRef :SVGTextElement;
     const [taskItem, setTaskItem] = createSignal<JSX.Element>(<div />);
-    const [isTextInside, setIsTextInside] = createSignal(true);
+    const [isTextInside, setIsTextInside] = createSignal(false);
 
     createEffect(on(
         () => [task, isSelected],
@@ -110,29 +110,33 @@ export const TaskItem: Component<TaskItemProps> = (props) => {
 return (
   <circle
                 cx={getX()  }
-                cy={ 100 + taskHeight * 0.5  }
-		r="10"
-		stroke="black" 
-		/>
-)
-*/
-
-return (
-  <circle
-                cx={getX()  }
                 cy={ task.y + taskHeight * 0.5  }
 		r="10"
 		stroke="black" 
 		/>
 )
-
+*/
+/*
+return (
+            <text
+                x={getX()}
+                y={task.y + taskHeight * 0.5}
+                class={
+                        style.barLabel && style.barLabelOutside
+                }
+                ref={textRef}
+            >
+                {task.name}
+            </text>
+)
+*/
 
 /*
 return (
   <circle cx="150" cy="20" r="10" stroke="black" fill="none"/>
 );
 */
-    //console.log(getX());
+
 /*
     return (
 
@@ -177,7 +181,49 @@ return (
             </text>
         </g>
     );
+
 */
 
+    return (
+
+        <g
+            onKeyDown={(e) => {
+                switch (e.key) {
+                    case "Delete": {
+                        if (isDelete) onEventStart("delete", task, e);
+                        break;
+                    }
+                }
+                e.stopPropagation();
+            }}
+            onMouseEnter={(e) => {
+                onEventStart("mouseenter", task, e);
+            }}
+            onMouseLeave={(e) => {
+                onEventStart("mouseleave", task, e);
+            }}
+            onDoubleClick={(e) => {
+                onEventStart("dblclick", task, e);
+            }}
+            onClick={(e) => {
+                onEventStart("click", task, e);
+            }}
+            onFocus={() => {
+                onEventStart("select", task);
+            }}
+        >
+            {taskItem()}
+            <text
+                x={getX()}
+                y={task.y + taskHeight * 0.5}
+                class={
+                         style.barLabel && style.barLabelOutside
+                }
+                ref={textRef}
+            >
+                {task.name}
+            </text>
+        </g>
+    );
 
 };

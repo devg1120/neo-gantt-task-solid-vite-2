@@ -303,7 +303,7 @@ console.log(
                                 taskFrom={task}
                                 taskTo={tasks()[child.index]}
                                 rowHeight={rowHeight}
-                                taskHeight={taskHeight}
+                                taskHeight={taskHeight()}
                                 arrowIndent={arrowIndent}
                                 rtl={rtl}
                             />

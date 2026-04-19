@@ -16,16 +16,16 @@ export const Bar: Component<TaskItemProps> = ({
     const progressPoint = getProgressPoint(
         +!rtl * task.progressWidth + task.progressX,
         task.y,
-        task.height,
+        task.height(),
     );
-    const handleHeight = task.height - 2;
+    const handleHeight = task.height() - 2;
     return (
         <g class={styles.barWrapper} tabIndex={0}>
             <BarDisplay
                 x={task.x1}
                 y={task.y}
                 width={task.x2 - task.x1}
-                height={task.height}
+                height={task.height()}
                 progressX={task.progressX}
                 progressWidth={task.progressWidth}
                 barCornerRadius={task.barCornerRadius}
