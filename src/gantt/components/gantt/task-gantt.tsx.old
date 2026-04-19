@@ -37,7 +37,7 @@ export const TaskGantt: Component<TaskGanttProps> = ({
 
     let newBarProps = { ...barProps, svg: ganttSVGRef };
 
-    const [__SVG, setSVG] = createSignal(
+    const [__newBarProps, setNewBarProps] = createSignal(
               { ...barProps, svg: ganttSVGRef }
     );
 
@@ -56,8 +56,8 @@ export const TaskGantt: Component<TaskGanttProps> = ({
             console.log("onMount");
             //console.log("ganttSVGRef", ganttSVGRef);
             if (ganttSVGRef) {
-               newBarProps = { ...barProps, svg: ganttSVGRef };
-               setSVG(  <TaskGanttContent {...newBarProps()} />);
+               setNewBarProps(  { ...barProps, svg: ganttSVGRef });
+	       console.log(__newBarProps().svg);
             }
 
     });
@@ -144,7 +144,8 @@ export const TaskGantt: Component<TaskGanttProps> = ({
 
                     <title>Gantt Chart</title>
                     <Grid {...gridProps} />
-		    {__SVG()}
+                    <TaskGanttContent {...__newBarProps()} />
+		    
 
                 </svg>
             </div>

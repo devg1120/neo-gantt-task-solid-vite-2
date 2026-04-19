@@ -61,7 +61,7 @@ console.log(
     // rowHeight,
     // columnWidth,
     // timeStep,
-    // svg,
+    "svg",  svg,
     // taskHeight(),
     // arrowColor,
     // arrowIndent,
@@ -73,7 +73,8 @@ console.log(
    //console.log("arrowIdent", arrowIndent);
    //console.log("taskHeight", taskHeight());
    //console.log("ganttEvent", __ganttEvent);
-    const point = svg?.current?.createSVGPoint();
+    //const point = svg?.current?.createSVGPoint();
+    const point = svg?.createSVGPoint();
     const [xStep, setXStep] = createSignal(0);
     const [initEventX1Delta, setInitEventX1Delta] = createSignal(0);
     const [isMoving, setIsMoving] = createSignal(false);
@@ -246,6 +247,8 @@ console.log(
         }
         // Mouse Events
         else if (action === "mouseenter") {
+	    console.log("mouseenter")
+
             if (!__ganttEvent().action) {
                 setGanttEvent({
                     action,
@@ -264,7 +267,10 @@ console.log(
         }
         // Change task event start
         else if (action === "move") {
-            if (!svg?.current || !point) return;
+	    console.log("move", svg, point)
+            //if (!svg?.current || !point) return;
+            if (!svg || !point) return;
+	    console.log("move2")
             point.x = event.clientX;
             const cursor = point.matrixTransform(
                 svg.current.getScreenCTM()?.inverse(),

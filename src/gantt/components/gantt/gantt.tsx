@@ -659,13 +659,13 @@ export const Gantt: Component<GanttProps> = ({
                     <Tooltip
                         arrowIndent={arrowIndent}
                         rowHeight={rowHeight}
-                        svgContainerHeight={svgContainerHeight}
-                        svgContainerWidth={svgContainerWidth}
+                        svgContainerHeight={__svgContainerHeight()}
+                        svgContainerWidth={__svgContainerWidth()}
                         fontFamily={fontFamily}
                         fontSize={fontSize}
                         scrollX={scrollX}
                         scrollY={scrollY}
-                        task={ganttEvent.changedTask}
+                        task={__ganttEvent().changedTask}
                         headerHeight={headerHeight}
                         taskListWidth={__taskListWidth()}
                         TooltipContent={TooltipContent}
