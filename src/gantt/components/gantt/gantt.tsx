@@ -268,6 +268,8 @@ export const Gantt: Component<GanttProps> = ({
 
     createEffect(() => {
         const { changedTask, action } = __ganttEvent();
+	//console.log("effect", changedTask, action);
+
         if (changedTask) {
             if (action === "delete") {
                 setGanttEvent({ action: "" });
@@ -278,7 +280,15 @@ export const Gantt: Component<GanttProps> = ({
                 action === "start" ||
                 action === "progress"
             ) {
+	console.log(changedTask.id, action);
                 const prevStateTask = __barTasks().find((t) => t.id === changedTask.id);
+                console.log(prevStateTask.start.getTime());
+                console.log(prevStateTask.end.getTime());
+                console.log(prevStateTask.progress);
+                console.log(changedTask.start.getTime());
+                console.log(changedTask.end.getTime());
+                console.log(changedTask.progress);
+
                 if (
                     prevStateTask &&
                     (prevStateTask.start.getTime() !== changedTask.start.getTime() ||
@@ -286,6 +296,7 @@ export const Gantt: Component<GanttProps> = ({
                         prevStateTask.progress !== changedTask.progress)
                 ) {
                     // actions for change
+                    console.log("actions for change");
                     const newTaskList = barTasks().map((t) =>
                         t.id === changedTask.id ? changedTask : t,
                     );

@@ -52,7 +52,7 @@ export const TaskGanttContent: Component<TaskGanttContentProps> = ({
     onClick,
     onDelete,
 }) => {
-
+/*
 console.log(
     // tasks(),
     // dates,
@@ -69,7 +69,7 @@ console.log(
     // fontSize,
     // rtl,
     );
-
+*/
    //console.log("arrowIdent", arrowIndent);
    //console.log("taskHeight", taskHeight());
    //console.log("ganttEvent", __ganttEvent);
@@ -96,7 +96,7 @@ console.log(
 
     createEffect(on(
         () => [
-            __ganttEvent,
+            __ganttEvent(),
             xStep(),
             initEventX1Delta(),
             onProgressChange,
@@ -111,37 +111,37 @@ console.log(
         ],
         () => {
             const handleMouseMove = async (event: MouseEvent) => {
-                if (!ganttEvent.changedTask || !point || !svg?.current) return;
+                if (!__ganttEvent().changedTask || !point || !svg) return;
                 event.preventDefault();
 
                 point.x = event.clientX;
                 const cursor = point.matrixTransform(
-                    svg?.current.getScreenCTM()?.inverse(),
+                    svg?.getScreenCTM()?.inverse(),
                 );
 
                 const { isChanged, changedTask } = handleTaskBySVGMouseEvent(
                     cursor.x,
-                    ganttEvent.action as BarMoveAction,
-                    ganttEvent.changedTask,
+                    __ganttEvent().action as BarMoveAction,
+                    __ganttEvent().changedTask,
                     xStep(),
                     timeStep,
                     initEventX1Delta(),
                     rtl,
                 );
                 if (isChanged) {
-                    setGanttEvent({ action: ganttEvent.action, changedTask });
+                    setGanttEvent({ action: __ganttEvent().action, changedTask });
                 }
             };
 
             const handleMouseUp = async (event: MouseEvent) => {
-                const { action, originalSelectedTask, changedTask } = ganttEvent;
-                if (!changedTask || !point || !svg?.current || !originalSelectedTask)
+                const { action, originalSelectedTask, changedTask } = __ganttEvent();
+                if (!changedTask || !point || !svg || !originalSelectedTask)
                     return;
                 event.preventDefault();
 
                 point.x = event.clientX;
                 const cursor = point.matrixTransform(
-                    svg?.current.getScreenCTM()?.inverse(),
+                    svg?.getScreenCTM()?.inverse(),
                 );
                 const { changedTask: newChangedTask } = handleTaskBySVGMouseEvent(
                     cursor.x,
@@ -159,8 +159,8 @@ console.log(
                     originalSelectedTask.progress !== newChangedTask.progress;
 
                 // remove listeners
-                svg.current.removeEventListener("mousemove", handleMouseMove);
-                svg.current.removeEventListener("mouseup", handleMouseUp);
+                svg.removeEventListener("mousemove", handleMouseMove);
+                svg.removeEventListener("mouseup", handleMouseUp);
                 setGanttEvent({ action: "" });
                 setIsMoving(false);
 
@@ -208,10 +208,10 @@ console.log(
                     __ganttEvent().action === "end" ||
                     __ganttEvent().action === "start" ||
                     __ganttEvent().action === "progress") &&
-                svg?.current
+                svg
             ) {
-                svg.current.addEventListener("mousemove", handleMouseMove);
-                svg.current.addEventListener("mouseup", handleMouseUp);
+                svg.addEventListener("mousemove", handleMouseMove);
+                svg.addEventListener("mouseup", handleMouseUp);
                 setIsMoving(true);
             }
         }
@@ -267,15 +267,17 @@ console.log(
         }
         // Change task event start
         else if (action === "move") {
-	    console.log("move", svg, point)
+	    //console.log("move", svg, point)
             //if (!svg?.current || !point) return;
             if (!svg || !point) return;
-	    console.log("move2")
+	    //console.log("move2")
             point.x = event.clientX;
             const cursor = point.matrixTransform(
-                svg.current.getScreenCTM()?.inverse(),
+                //svg.current.getScreenCTM()?.inverse(),
+                svg.getScreenCTM()?.inverse(),
             );
             setInitEventX1Delta(cursor.x - task.x1);
+            console.log("delta", cursor.x - task.x1);
             setGanttEvent({
                 action,
                 changedTask: task,
