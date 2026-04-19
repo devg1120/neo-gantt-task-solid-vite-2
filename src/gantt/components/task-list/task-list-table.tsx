@@ -73,7 +73,7 @@ export const TaskListTableDefault: Component<TaskListTableProps> = ({
                 return (
                     <div
                         class={styles.taskListTableRow}
-                        style={{ height: rowHeight }}
+                        style={{ height: rowHeight+"px" }}
                     >
                         <div
                             class={styles.taskListCell}

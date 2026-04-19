@@ -44,6 +44,9 @@ export const TaskList: Component<TaskListProps> = ({
     showFromTo,
 }) => {
     //const horizontalContainerRef = useRef<HTMLDivElement>(null);
+    console.log("headerHeight", headerHeight);
+    console.log("rowHeight", rowHeight);
+    //rowHeight = 45;
     let horizontalContainerRef :HTMLDivElement;
     createEffect(on(
         () => [scrollY],
