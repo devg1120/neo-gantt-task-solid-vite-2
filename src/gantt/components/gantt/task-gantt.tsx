@@ -22,6 +22,11 @@ export const TaskGantt: Component<TaskGanttProps> = ({
     scrollX,
 }) => {
 //console.log("gridProps", gridProps);
+//console.log("barProps", barProps);
+//console.log("barProps", barProps.tasks());
+     //  const _tasks = barProps.tasks()
+     //  console.log(barProps.rowHeight , "OK")
+     //  console.log(barProps.rowHeight , _tasks.length, "OK")
 
     //const ganttSVGRef = useRef<SVGSVGElement>(null);
     //const horizontalContainerRef = useRef<HTMLDivElement>(null);
@@ -90,6 +95,8 @@ export const TaskGantt: Component<TaskGanttProps> = ({
                 <circle cx="40" cy="37.32" r="10" stroke="blue" fill="none"/>
                 <circle cx="60" cy="37.32" r="10" stroke="green" fill="none"/>
             </svg>
+                    height={barProps.rowHeight * barProps.tasks.length}
+                    height={newBarProps.rowHeight * newBarProps.tasks().length}
 */}
             <div
                 ref={horizontalContainerRef}
@@ -103,13 +110,16 @@ export const TaskGantt: Component<TaskGanttProps> = ({
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width={gridProps.svgWidth}
-                    height={barProps.rowHeight * barProps.tasks.length}
-                    font-family={barProps.fontFamily}
+                    height={newBarProps.rowHeight * newBarProps.tasks().length}
+                    font-family={newBarProps.fontFamily}
                     ref={ganttSVGRef}
                 >
+
                     <title>Gantt Chart</title>
                     <Grid {...gridProps} />
                     <TaskGanttContent {...newBarProps} />
+		    
+
                 </svg>
             </div>
         </div>

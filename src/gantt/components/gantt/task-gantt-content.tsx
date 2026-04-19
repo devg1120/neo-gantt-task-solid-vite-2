@@ -53,6 +53,25 @@ export const TaskGanttContent: Component<TaskGanttContentProps> = ({
     onDelete,
 }) => {
 
+console.log(
+    // tasks(),
+    // dates,
+    // __ganttEvent(),
+    // selectedTask,
+    rowHeight,
+    columnWidth,
+    // timeStep,
+    svg,
+    taskHeight(),
+    arrowColor,
+    arrowIndent,
+    // fontFamily,
+    fontSize,
+    rtl,
+    );
+
+   //console.log("arrowIdent", arrowIndent);
+   //console.log("taskHeight", taskHeight());
    //console.log("ganttEvent", __ganttEvent);
     const point = svg?.current?.createSVGPoint();
     const [xStep, setXStep] = createSignal(0);
@@ -267,9 +286,17 @@ export const TaskGanttContent: Component<TaskGanttContentProps> = ({
 
     return (
         <g class="content">
+
+            <circle cx="30" cy="20" r="10" stroke="cyan" fill="red"/>
+            <circle cx="50" cy="20" r="10" stroke="black" fill="none"/>
+            <circle cx="70" cy="20" r="10" stroke="red" fill="none"/>
+            <circle cx="90" cy="37.32" r="10" stroke="yellow" fill="orange"/>
+            <circle cx="160" cy="37.32" r="10" stroke="green" fill="green"/>
+
             <g class="arrows" fill={arrowColor} stroke={arrowColor}>
                 {tasks().map((task) => {
                     return task.barChildren.map((child) => {
+		        
                         return (
                             <Arrow
                                 taskFrom={task}
@@ -289,7 +316,7 @@ export const TaskGanttContent: Component<TaskGanttContentProps> = ({
                         <TaskItem
                             task={task}
                             arrowIndent={arrowIndent}
-                            taskHeight={taskHeight}
+                            taskHeight={taskHeight()}
                             isProgressChangeable={!!onProgressChange && !task.isDisabled}
                             isDateChangeable={!!onDateChange && !task.isDisabled}
                             isDelete={!task.isDisabled}

@@ -39,6 +39,7 @@ export const TaskListHeaderDefault: Component<TaskListHeaderProps> = ({
 
 						style={{ height: headerHeight - 2 }}
 		style={{ height: headerHeight - 2, color: "red", height: "68px" }}
+		style={{ height: height_px }}
     */
     return (
         <div class={styles.ganttTable} style={{
