@@ -297,7 +297,7 @@ export const Gantt: Component<GanttProps> = ({
                 ) {
                     // actions for change
                     console.log("actions for change");
-                    const newTaskList = barTasks().map((t) =>
+                    const newTaskList = __barTasks().map((t) =>
                         t.id === changedTask.id ? changedTask : t,
                     );
                     setBarTasks(newTaskList);
