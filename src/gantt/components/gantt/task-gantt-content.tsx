@@ -156,7 +156,7 @@ console.log(
                     initEventX1Delta(),
                     rtl,
                 );
-/* GUSA
+/*
                 const isNotLikeOriginal =
                     originalSelectedTask.start !== newChangedTask.start ||
                     originalSelectedTask.end !== newChangedTask.end ||
@@ -190,7 +190,8 @@ console.log(
 		        console.log(error);
                         operationSuccess = false;
                     }
-                } else if (onProgressChange && isNotLikeOriginal) {
+                // GUSA } else if (onProgressChange && isNotLikeOriginal) {
+                } else if (onProgressChange  ) {
                     try {
                         const result = await onProgressChange(
                             newChangedTask,
