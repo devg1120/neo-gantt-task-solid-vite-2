@@ -261,6 +261,6 @@ export function getStartEndDateForProject(tasks: Task[], projectId: string) {
             end = task.end;
         }
     }
-    console.log(start, end);
+    //console.log(start, end);
     return [start, end];
 }

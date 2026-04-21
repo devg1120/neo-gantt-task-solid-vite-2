@@ -134,10 +134,13 @@ console.log(
             };
 
             const handleMouseUp = async (event: MouseEvent) => {
-/*
+                //console.log("handleMouseUp");
                 const { action, originalSelectedTask, changedTask } = __ganttEvent();
+                console.log("handleMouseUp action", action);
+/* GUSA
                 if (!changedTask || !point || !svg || !originalSelectedTask)
                     return;
+*/
                 event.preventDefault();
 
                 point.x = event.clientX;
@@ -153,7 +156,7 @@ console.log(
                     initEventX1Delta(),
                     rtl,
                 );
-
+/* GUSA
                 const isNotLikeOriginal =
                     originalSelectedTask.start !== newChangedTask.start ||
                     originalSelectedTask.end !== newChangedTask.end ||
@@ -169,18 +172,22 @@ console.log(
                 let operationSuccess = true;
                 if (
                     (action === "move" || action === "end" || action === "start") &&
-                    onDateChange &&
-                    isNotLikeOriginal
+                    //onDateChange &&
+                    //isNotLikeOriginal
+                    onDateChange 
                 ) {
+		    console.log("=========================");
                     try {
                         const result = await onDateChange(
                             newChangedTask,
                             newChangedTask.barChildren,
                         );
+		        console.log("onDateChange", result);
                         if (result !== undefined) {
                             operationSuccess = result;
                         }
                     } catch (error) {
+		        console.log(error);
                         operationSuccess = false;
                     }
                 } else if (onProgressChange && isNotLikeOriginal) {

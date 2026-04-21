@@ -3,7 +3,7 @@ import type { ScrollSyncSig } from "./gantt/types/public-types";
 import { ViewSwitcher } from "./components/view-switcher";
 import { getStartEndDateForProject, initTasks } from "./helper2";
 import "./index.css";
-import { createSignal, createEffect } from "solid-js";
+import { createSignal } from "solid-js";
 
 // Init
 const App = () => {
@@ -25,14 +25,9 @@ const App = () => {
         columnWidth = 250;
     }
 
-    createEffect(()=> {
-
-	console.log("update", tasks());
-    });
 
     const handleTaskChange = (task: Task) => {
         console.log(`On date change Id:${task.id}`);
-        console.log(task);
         let newTasks = tasks().map((t) => (t.id === task.id ? task : t));
         if (task.project) {
             const [start, end] = getStartEndDateForProject(newTasks, task.project);
@@ -48,7 +43,6 @@ const App = () => {
                 );
             }
         }
-	//console.log(newTasks);
         setTasks(newTasks);
     };
 
@@ -134,7 +128,7 @@ const App = () => {
                 rowHeight={rowHeight}
                 showFromTo={showFromTo()}
             />
-
+{/*
             <h3>Gantt With Limited Height1</h3>
             <Gantt
                 id={2}
@@ -185,7 +179,7 @@ const App = () => {
             />
             <h3>No Tasks</h3>
             <Gantt tasks={[]} />
-
+*/}
         </div>
     );
 };
