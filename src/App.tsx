@@ -12,6 +12,22 @@ const App = () => {
     const [tasks, setTasks] = createSignal<Task[]>(initTasks());
     const [isChecked, setIsChecked] = createSignal(true);
 
+    const expandListWidth = "100px"
+    const [listWidth, setListWidth] = createSignal(expandListWidth);
+
+
+    createEffect(()=> {
+         //console.log("isChecked",isChecked());
+	 if (isChecked() ) {
+              setListWidth(expandListWidth);
+         } else {
+              setListWidth("");
+	 }
+
+         console.log(isChecked(), listWidth());
+
+    });
+
 
     let headerHeight = 70;
     //let columnWidth = 65;
@@ -111,7 +127,7 @@ const App = () => {
             <ViewSwitcher
                 onViewModeChange={(viewMode) => setView(viewMode)}
                 onViewListChange={setIsChecked}
-                isChecked={isChecked()}
+                isChecked={isChecked}
                 showFromTo={showFromTo()}
                 setShowFromTo={setShowFromTo}
             />
@@ -149,7 +165,7 @@ const App = () => {
                 onClick={handleClick}
                 onSelect={handleSelect}
                 onExpanderClick={handleExpanderClick}
-                listCellWidth={isChecked() ? "155px" : ""}
+                listCellWidth={listWidth}
                 ganttHeight={300}
                 headerHeight={headerHeight}
                 columnWidth={columnWidth}
@@ -175,7 +191,7 @@ const App = () => {
                 onClick={handleClick}
                 onSelect={handleSelect}
                 onExpanderClick={handleExpanderClick}
-                listCellWidth={isChecked() ? "155px" : ""}
+                listCellWidth={listWidth}
                 ganttHeight={200}
                 headerHeight={headerHeight}
                 columnWidth={columnWidth}

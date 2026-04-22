@@ -10,6 +10,9 @@ export const HorizontalScroll: Component<{
     rtl: boolean;
     onScroll: (event: SyntheticEvent) => void;
 }> = ({ scroll, svgWidth, taskListWidth, rtl, onScroll }) => {
+
+ console.log("hs",scroll, svgWidth, taskListWidth, rtl )
+
     //const scrollRef = useRef<HTMLDivElement>(null);
     let scrollRef :HTMLDivElement;
 

@@ -15,6 +15,15 @@ export const ViewSwitcher: Component<ViewSwitcherProps> = ({
     showFromTo,
     setShowFromTo,
 }) => {
+
+
+
+    const check =  () => {
+      let c = isChecked();
+       console.log("check", c);
+      onViewListChange(!c)
+     }
+
     return (
         <div class="ViewContainer">
             <button
@@ -77,8 +86,9 @@ export const ViewSwitcher: Component<ViewSwitcherProps> = ({
                 <label class="Switch_Toggle">
                     <input
                         type="checkbox"
-                        defaultChecked={isChecked}
-                        onClick={() => onViewListChange(!isChecked)}
+                        defaultChecked={isChecked()}
+                        //onClick={() => onViewListChange(!isChecked())}
+                        onClick={() => check()}
                     />
                     <span class="Slider" />
                 </label>

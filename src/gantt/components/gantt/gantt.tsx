@@ -27,7 +27,8 @@ export const Gantt: Component<GanttProps> = ({
     //headerHeight = 50,
     headerHeight = 70,
     columnWidth = 60,
-    listCellWidth = "155px",
+    //listCellWidth = "155px",
+    listCellWidth ,
     rowHeight = 50,
     ganttHeight = 0,
     viewMode = ViewModeEnum.Day,
@@ -323,12 +324,12 @@ export const Gantt: Component<GanttProps> = ({
 
     createEffect(() => {
         if (!listCellWidth) {
-            setTaskListWidth(0);
+            setTaskListWidth("0px");
         }
         //if (taskListRef.current) {
         if (taskListRef) {
             //setTaskListWidth(taskListRef.current.offsetWidth);
-            setTaskListWidth(taskListRef.offsetWidth);
+            setTaskListWidth(taskListRef.offsetWidth + "px");
         }
     }) ;
 
@@ -628,7 +629,7 @@ export const Gantt: Component<GanttProps> = ({
 
     const tableProps: TaskListProps = {
         rowHeight,
-        rowWidth: listCellWidth,
+        rowWidth: listCellWidth(),
         fontFamily,
         fontSize,
         tasks: __barTasks,
@@ -660,7 +661,7 @@ export const Gantt: Component<GanttProps> = ({
                 tabIndex={-1}
             >
                 {/* Column: Task List */}
-                {listCellWidth && <TaskList {...tableProps} />}
+                {listCellWidth() && <TaskList {...tableProps} />}
                 {/* Column: Gantt Chart */}
                 <TaskGantt
                     gridProps={gridProps}
