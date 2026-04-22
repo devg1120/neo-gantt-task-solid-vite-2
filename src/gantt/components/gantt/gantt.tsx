@@ -75,6 +75,8 @@ export const Gantt: Component<GanttProps> = ({
 
     //console.log(tasks);
     //console.log(viewMode);
+    console.log(ganttHeight);
+
     const createDefaultDates = () => {
         const today = new Date();
         const daysBefore = 7;

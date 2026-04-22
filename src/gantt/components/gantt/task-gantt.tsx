@@ -62,6 +62,22 @@ export const TaskGantt: Component<TaskGanttProps> = ({
 
     });
 
+
+/*
+  onMount(() =>  {
+            console.log("onMount");
+            //console.log("ganttSVGRef", ganttSVGRef);
+            if (ganttSVGRef) {
+               newBarProps = { ...barProps, svg: ganttSVGRef };
+               setSVG(  
+                    <Grid {...gridProps} />
+
+	       <TaskGanttContent {...newBarProps()} />
+	       );
+            }
+
+    });
+*/
     createEffect(on(
         () => [scrollY],
         () => {
@@ -124,14 +140,21 @@ export const TaskGantt: Component<TaskGanttProps> = ({
                     height={newBarProps.rowHeight * newBarProps.tasks().length}
 
                     <TaskGanttContent {...newBarProps} />
+			style={
+					ganttHeight
+						? { height: ganttHeight, width: gridProps.svgWidth }
+						: { width: gridProps.svgWidth }
+				}
 */}
+
+
             <div
                 ref={horizontalContainerRef}
                 class={styles.horizontalContainer}
 			style={
 					ganttHeight
-						? { height: ganttHeight, width: gridProps.svgWidth }
-						: { width: gridProps.svgWidth }
+						? { height: ganttHeight+"px", width: gridProps.svgWidth+"px" }
+						: { width: gridProps.svgWidth+"px" }
 				}
             >
                 <svg
@@ -148,6 +171,7 @@ export const TaskGantt: Component<TaskGanttProps> = ({
 
                 </svg>
             </div>
+
         </div>
     );
 };

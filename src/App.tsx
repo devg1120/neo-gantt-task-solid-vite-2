@@ -115,6 +115,7 @@ const App = () => {
                 showFromTo={showFromTo()}
                 setShowFromTo={setShowFromTo}
             />
+{/*
             <h3>Gantt With Unlimited Height</h3>
             <Gantt
                 id={1}
@@ -127,15 +128,16 @@ const App = () => {
                 onClick={handleClick}
                 onSelect={handleSelect}
                 onExpanderClick={handleExpanderClick}
-                listCellWidth={isChecked() ? "155px" : ""}
+                listCellWidth={isChecked() ? "155px" : ""3
                 //ganttHeight={300}
                 headerHeight={headerHeight}
                 columnWidth={columnWidth}
                 rowHeight={rowHeight}
                 showFromTo={showFromTo()}
             />
-
+*/}
             <h3>Gantt With Limited Height1</h3>
+	    
             <Gantt
                 id={2}
                 tasks={tasks}
@@ -159,6 +161,8 @@ const App = () => {
                 syncScrollX={syncScrollX()}
                 syncScrollY={syncScrollY()}
             />
+	    
+	   
             <h3>Gantt With Limited Height2</h3>
             <Gantt
                 id={3}
@@ -172,7 +176,7 @@ const App = () => {
                 onSelect={handleSelect}
                 onExpanderClick={handleExpanderClick}
                 listCellWidth={isChecked() ? "155px" : ""}
-                ganttHeight={300}
+                ganttHeight={200}
                 headerHeight={headerHeight}
                 columnWidth={columnWidth}
                 rowHeight={rowHeight}
@@ -183,6 +187,7 @@ const App = () => {
                 syncScrollX={syncScrollX()}
                 syncScrollY={syncScrollY()}
             />
+	   
             <h3>No Tasks</h3>
 
         </div>

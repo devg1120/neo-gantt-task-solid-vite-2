@@ -47,6 +47,7 @@ export const TaskList: Component<TaskListProps> = ({
     //console.log("headerHeight", headerHeight);
     //console.log("rowHeight", rowHeight);
     //rowHeight = 45;
+    console.log("ganttHeight",ganttHeight)
     let horizontalContainerRef :HTMLDivElement;
     createEffect(on(
         () => [scrollY],
@@ -77,14 +78,17 @@ export const TaskList: Component<TaskListProps> = ({
         onExpanderClick,
         showFromTo,
     };
-
+/*
+                style={{ height: ganttHeight+"px" }}
+                style={ganttHeight ? { height: ganttHeight } : {}}
+		*/
     return (
         <div ref={taskListRef}>
             <TaskListHeader {...headerProps} />
             <div
                 ref={horizontalContainerRef}
                 class={horizontalContainerClass}
-                style={ganttHeight ? { height: ganttHeight } : {}}
+                style={ganttHeight ? { height: ganttHeight+"px" } : {}}
             >
                 <TaskListTable {...tableProps} />
             </div>
