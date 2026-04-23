@@ -30,14 +30,14 @@ export const HorizontalScroll: Component<{
             dir="ltr"
 			style={{
 				margin: rtl
-					? `0px ${taskListWidth}px 0px 0px`
-					: `0px 0px 0px ${taskListWidth}px`,
+					? `0px ${taskListWidth()}px 0px 0px`
+					: `0px 0px 0px ${taskListWidth()}px`,
 			}}
             class={styles.scrollWrapper}
             onScroll={onScroll}
             ref={scrollRef}
         >
-            <div style={{ width: svgWidth }} class={styles.scroll} />
+            <div style={{ "width": svgWidth+ "px" }} class={styles.scroll} />
         </div>
     );
 

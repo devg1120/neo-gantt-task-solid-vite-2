@@ -13,7 +13,8 @@ const App = () => {
     const [isChecked, setIsChecked] = createSignal(true);
 
     //const expandListWidth = "555px"
-    const expandListWidth = "255px"
+    //const expandListWidth = "255px"
+    const expandListWidth = "200px"
     const [listWidth, setListWidth] = createSignal(expandListWidth);
 
 

@@ -1,4 +1,4 @@
-import { createSignal , createMemo,  createEffect} from 'solid-js';
+import { createSignal , createMemo,  createEffect, onMount} from 'solid-js';
 
 import { convertToBarTasks } from "../../helpers/bar-helper";
 import { ganttDateRange, seedDates } from "../../helpers/date-helper";
@@ -76,7 +76,7 @@ export const Gantt: Component<GanttProps> = ({
 
     //console.log(tasks);
     //console.log(viewMode);
-    console.log(ganttHeight);
+    console.log(ganttHeight, listCellWidth());
 
     const createDefaultDates = () => {
         const today = new Date();
@@ -122,7 +122,7 @@ export const Gantt: Component<GanttProps> = ({
         undefined,
     );
 
-    const [__taskListWidth, setTaskListWidth] = createSignal(0);
+    const [__taskListWidth, setTaskListWidth] = createSignal(200);
     const [__svgContainerWidth, setSvgContainerWidth] = createSignal(0);
     const [__svgContainerHeight, setSvgContainerHeight] = createSignal(ganttHeight);
     const [__barTasks, setBarTasks] = createSignal<BarTask[]>([]);
@@ -321,19 +321,31 @@ export const Gantt: Component<GanttProps> = ({
     } );
 
 
-
+/*
     createEffect(() => {
-        if (!listCellWidth) {
-            setTaskListWidth("0px");
+        if (!listCellWidth()) {
+            setTaskListWidth(0);
         }
         //if (taskListRef.current) {
         if (taskListRef) {
             //setTaskListWidth(taskListRef.current.offsetWidth);
-            setTaskListWidth(taskListRef.offsetWidth + "px");
+            setTaskListWidth(taskListRef.offsetWidth);
         }
     }) ;
+*/
 
 
+    createEffect(() => {
+            let v = listCellWidth();
+	    console.log("v",v);
+	    if (v == "") {
+            setTaskListWidth(0);
+	    } else {
+	      let v2 = v.slice(0, -2); 
+            setTaskListWidth(Number(v2));
+	    }
+
+    }) ;
 
     createEffect(() => {
         //if (wrapperRef.current) {
@@ -700,7 +712,7 @@ export const Gantt: Component<GanttProps> = ({
             </div>
             <HorizontalScroll
                 svgWidth={svgWidth}
-                taskListWidth={__taskListWidth()}
+                taskListWidth={__taskListWidth}
                 scroll={scrollX}
                 rtl={rtl}
                 onScroll={handleScrollX}
@@ -708,3 +720,16 @@ export const Gantt: Component<GanttProps> = ({
         </div>
     );
 };
+
+/*
+
+            <HorizontalScroll
+                svgWidth={svgWidth}
+                taskListWidth={__taskListWidth()}
+                scroll={scrollX}
+                rtl={rtl}
+                onScroll={handleScrollX}
+            />
+
+
+*/
