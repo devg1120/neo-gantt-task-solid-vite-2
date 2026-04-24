@@ -3,7 +3,7 @@ import type { ScrollSyncSig } from "./gantt/types/public-types";
 import { ViewSwitcher } from "./components/view-switcher";
 import { getStartEndDateForProject, initTasks } from "./helper2";
 import "./index.css";
-import { createSignal, createEffect } from "solid-js";
+import { createSignal, createEffect, For } from "solid-js";
 
 // Init
 const App = () => {
@@ -14,7 +14,7 @@ const App = () => {
     const [tasks, setTasks] = createSignal<Task[]>(initTasks());
     const [isChecked, setIsChecked] = createSignal(true);
 
-    const [key, setKey] = createSignal(0);
+    const [key, setKey] = createSignal({});
 
 
     //const expandListWidth = "555px"
@@ -22,13 +22,12 @@ const App = () => {
     const expandListWidth = "200px"
     const [listWidth, setListWidth] = createSignal(expandListWidth);
 
- /*   let viewMode = ViewMode.Day;
+    //let viewMode = ViewMode.Day;
 
     createEffect(()=> {
-        viewMode = view();
-	console.log(viewMode)
+	console.log(view())
     });
-*/
+
     createEffect(()=> {
          //console.log("isChecked",isChecked());
 	 if (isChecked() ) {
@@ -98,8 +97,7 @@ const App = () => {
          } else if (view() === ViewMode.Day) {
              setColumnWidth(50);
          }
-            setKey((k) => k + 1);
-	    console.log(key());
+	    setKey([{}]);
     });
 
 
@@ -220,9 +218,9 @@ const App = () => {
             />
 */}
             <h3>Gantt With Limited Height1</h3>
-	    
+  <For each={key()}>{() => 
+  
             <Gantt
-	        key={key()}
                 id={2}
                 tasks={tasks}
                 viewMode={view()}
@@ -246,6 +244,7 @@ const App = () => {
                 syncScrollY={syncScrollY()}
             />
 	    
+  }</For>
 	   
             <h3>Gantt With Limited Height2</h3>
             <Gantt
