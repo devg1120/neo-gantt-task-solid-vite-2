@@ -192,7 +192,7 @@ const App = () => {
                 onViewModeChange={(viewMode) =>{console.log("setView", viewMode);  setView(viewMode)}}
                 onViewListChange={setIsChecked}
                 isChecked={isChecked}
-                showFromTo={showFromTo()}
+                showFromTo={showFromTo}
                 setShowFromTo={setShowFromTo}
             />
 {/*

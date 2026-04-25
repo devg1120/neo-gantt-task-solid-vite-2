@@ -24,6 +24,11 @@ export const ViewSwitcher: Component<ViewSwitcherProps> = ({
       onViewListChange(!c)
      }
 
+    const fromto_check =  () => {
+      let c = showFromTo();
+       console.log("fromto_check", c);
+      setShowFromTo(!c)
+     }
     return (
         <div class="ViewContainer">
             <button
@@ -99,7 +104,8 @@ export const ViewSwitcher: Component<ViewSwitcherProps> = ({
                     <input
                         type="checkbox"
                         defaultChecked={showFromTo}
-                        onClick={() => setShowFromTo(!showFromTo)}
+                        //onClick={() => setShowFromTo(!showFromTo)}
+                        onClick={() => fromto_check()}
                     />
                     <span class="Slider" />
                 </label>

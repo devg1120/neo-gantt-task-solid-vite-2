@@ -44,8 +44,8 @@ export const Calendar: Component<CalendarProps> = ({
         const topValues: JSXElement[] = [];
         const bottomValues: JSXElement[] = [];
         const topDefaultHeight = headerHeight * 0.5;
-        for (let i = 0; i < dateSetup().dates.length; i++) {
-            const date = dateSetup().dates[i];
+        for (let i = 0; i < __dateSetup()().dates.length; i++) {
+            const date = __dateSetup()().dates[i];
             const bottomValue = date.getFullYear();
             bottomValues.push(
                 <text
@@ -58,7 +58,7 @@ export const Calendar: Component<CalendarProps> = ({
             );
             if (
                 i === 0 ||
-                date.getFullYear() !== dateSetup().dates[i - 1].getFullYear()
+                date.getFullYear() !== __dateSetup()().dates[i - 1].getFullYear()
             ) {
                 const topValue = date.getFullYear().toString();
                 const xText = calculateXText(rtl, i, date.getFullYear(), columnWidth);
@@ -81,8 +81,8 @@ export const Calendar: Component<CalendarProps> = ({
         const topValues: JSXElement[] = [];
         const bottomValues: JSXElement[] = [];
         const topDefaultHeight = headerHeight * 0.5;
-        for (let i = 0; i < dateSetup().dates.length; i++) {
-            const date = dateSetup().dates[i];
+        for (let i = 0; i < __dateSetup()().dates.length; i++) {
+            const date = __dateSetup()().dates[i];
             // const bottomValue = getLocaleMonth(date, locale);
             const quarter = `Q${Math.floor((date.getMonth() + 3) / 3)}`;
             bottomValues.push(
@@ -96,7 +96,7 @@ export const Calendar: Component<CalendarProps> = ({
             );
             if (
                 i === 0 ||
-                date.getFullYear() !== dateSetup().dates[i - 1].getFullYear()
+                date.getFullYear() !== __dateSetup()().dates[i - 1].getFullYear()
             ) {
                 const topValue = date.getFullYear().toString();
                 const xText = calculateXText(rtl, i, date.getMonth(), columnWidth);
@@ -314,7 +314,7 @@ export const Calendar: Component<CalendarProps> = ({
         const bottomValues: JSXElement[] = [];
         const ticks = viewMode === ViewModeEnum.HalfDay ? 2 : 4;
         const topDefaultHeight = headerHeight * 0.5;
-        const dates = dateSetup().dates;
+        const dates = __dateSetup()().dates;
         for (let i = 0; i < dates.length; i++) {
             const date = dates[i];
             const bottomValue = getCachedDateTimeFormat(locale, {
@@ -371,7 +371,7 @@ export const Calendar: Component<CalendarProps> = ({
         const topValues: JSXElement[] = [];
         const bottomValues: JSXElement[] = [];
         const topDefaultHeight = headerHeight * 0.5;
-        const dates = dateSetup().dates;
+        const dates = __dateSetup()().dates;
         for (let i = 0; i < dates.length; i++) {
             const date = dates[i];
             const bottomValue = getCachedDateTimeFormat(locale, {
